@@ -1,0 +1,28 @@
+# Port configuration
+PORT=9090
+
+# Cache settings
+CACHE_LIMIT=100
+CACHE_TTL=3600
+MAX_CACHE_SIZE_MB=100
+
+# Logging
+LOG_LEVEL=INFO
+
+# Connection settings
+CONNECTION_TIMEOUT=30
+
+# Features
+ENABLE_STATS=true
+
+# Blocked domains (one per line)
+BLOCK=instagram.com
+BLOCK=youtube.com
+BLOCK=facebook.com
+
+# Whitelisted domains (optional - if set, only these are allowed)
+# WHITELIST=example.com
+# WHITELIST=google.com
+
+# Comments start with #
+# Reload this file while server is running to apply changes!

@@ -1,0 +1,38 @@
+# Build artifacts
+build/
+*.o
+*.out
+*.exe
+proxy_server
+proxy
+
+# Logs
+logs/*.log
+*.log
+
+# Cache
+cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Compiled files
+*.so
+*.dylib
+*.dll
+
+# Core dumps
+core
+core.*
