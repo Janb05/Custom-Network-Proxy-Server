@@ -304,6 +304,3 @@ Created as a learning project for understanding network programming, proxy serve
 - [C++ Network Programming](https://beej.us/guide/bgnet/)
 - [Proxy Server Basics](https://en.wikipedia.org/wiki/Proxy_server)
 
----
-
-**Happy Proxying! 🎉**
