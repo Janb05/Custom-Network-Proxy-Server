@@ -21,6 +21,7 @@ private:
     std::string log_level;
     size_t max_cache_size_mb;
     int connection_timeout;
+    int max_connections;
     bool enable_stats;
     
     std::unordered_set<std::string> blocked_hosts;
@@ -43,6 +44,7 @@ public:
     std::string get_log_level() const { return log_level; }
     size_t get_max_cache_size_mb() const { return max_cache_size_mb; }
     int get_connection_timeout() const { return connection_timeout; }
+    int get_max_connections() const { return max_connections; }
     bool is_stats_enabled() const { return enable_stats; }
     
     bool is_blocked(const std::string& host) const;

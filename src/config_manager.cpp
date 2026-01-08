@@ -9,7 +9,7 @@ ConfigManager::ConfigManager(const std::string& filename)
     : config_file(filename), last_mtime(0),
       port(8080), cache_limit(100), cache_ttl(3600),
       log_level("INFO"), max_cache_size_mb(100),
-      connection_timeout(30), enable_stats(true) {
+      connection_timeout(30), max_connections(100), enable_stats(true) {
 }
 
 bool ConfigManager::load() {
@@ -51,6 +51,9 @@ bool ConfigManager::load() {
         }
         else if (line.find("CONNECTION_TIMEOUT=") == 0) {
             connection_timeout = std::stoi(line.substr(19));
+        }
+        else if (line.find("MAX_CONNECTIONS=") == 0) {
+            max_connections = std::stoi(line.substr(16));
         }
         else if (line.find("ENABLE_STATS=") == 0) {
             std::string val = line.substr(13);

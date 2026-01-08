@@ -82,6 +82,12 @@ void Logger::log_request(const std::string& ip, const std::string& host,
     info(oss.str());
 }
 
+void Logger::log_url(const std::string& ip, const std::string& url, const std::string& method) {
+    std::ostringstream oss;
+    oss << "URL_LOG: " << ip << " " << method << " " << url;
+    info(oss.str());
+}
+
 void Logger::set_level(LogLevel level) {
     min_level = level;
 }

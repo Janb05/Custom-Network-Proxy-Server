@@ -3,6 +3,7 @@
 
 #include <string>
 #include <atomic>
+#include <semaphore.h>
 #include "logger.h"
 #include "cache_manager.h"
 #include "config_manager.h"
@@ -20,12 +21,15 @@ private:
     Statistics* stats;
     RequestHandler* handler;
     
+    sem_t* connection_semaphore;  // Pointer for named semaphore (macOS compatible)
+    int max_connections;
+    
     bool setup_socket();
     void accept_connections();
     void handle_stats_request(int client);
 
 public:
-    ProxyServer(const std::string& config_file);
+    ProxyServer(const std::string& config_file, int max_conn = 0);  // 0 = use config value
     ~ProxyServer();
     
     bool start();

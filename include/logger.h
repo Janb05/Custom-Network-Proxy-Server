@@ -33,9 +33,8 @@ public:
     void error(const std::string& message);
     
     void log_request(const std::string& ip, const std::string& host, 
-                     const std::string& status, size_t bytes = 0);
-    
-    void set_level(LogLevel level);
+                    const std::string& status, size_t bytes = 0);
+    void log_url(const std::string& ip, const std::string& url, const std::string& method);    void set_level(LogLevel level);
 };
 
 #endif // LOGGER_H

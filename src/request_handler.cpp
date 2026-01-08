@@ -154,6 +154,7 @@ bool RequestHandler::handle_https_connect(int client, const std::string& request
     send(client, established, strlen(established), 0);
 
     logger->log_request(client_ip, host, "HTTPS_TUNNEL");
+    logger->log_url(client_ip, "https://" + host, "CONNECT");
     stats->record_request(host, client_ip);
 
     tunnel(client, remote);
@@ -173,6 +174,13 @@ bool RequestHandler::handle_http_request(int client, const std::string& request,
         send_error(client, "No Host header found");
         return false;
     }
+    
+    std::string path = extract_path(request);
+    std::string full_url = "http://" + host + path;
+    std::string method = request.substr(0, request.find(" "));
+    
+    // Log the complete URL
+    logger->log_url(client_ip, full_url, method);
 
     if (config->is_blocked(host)) {
         logger->log_request(client_ip, host, "BLOCKED_HTTP");
@@ -202,7 +210,6 @@ bool RequestHandler::handle_http_request(int client, const std::string& request,
         return false;
     }
 
-    std::string path = extract_path(request);
     std::string new_req = "GET " + path + " HTTP/1.0\r\n"
                          "Host: " + host + "\r\n"
                          "Connection: close\r\n"

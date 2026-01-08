@@ -5,12 +5,23 @@
 #include <arpa/inet.h>
 #include <thread>
 #include <csignal>
+#include <fcntl.h>
 
-ProxyServer::ProxyServer(const std::string& config_file)
-    : server_socket(-1), running(false) {
+ProxyServer::ProxyServer(const std::string& config_file, int max_conn)
+    : server_socket(-1), running(false), connection_semaphore(nullptr) {
     
     config = new ConfigManager(config_file);
     config->load();
+    
+    // Use max_conn parameter if provided, otherwise use config value
+    max_connections = (max_conn > 0) ? max_conn : config->get_max_connections();
+    
+    // Initialize named semaphore for connection limiting (macOS compatible)
+    sem_unlink("/proxy_sem");  // Remove if exists
+    connection_semaphore = sem_open("/proxy_sem", O_CREAT | O_EXCL, 0644, max_connections);
+    if (connection_semaphore == SEM_FAILED) {
+        std::cerr << "Failed to create semaphore, using unlimited connections" << std::endl;
+    }
     
     // Initialize logger with appropriate level
     LogLevel level = INFO;
@@ -28,11 +39,17 @@ ProxyServer::ProxyServer(const std::string& config_file)
     
     handler = new RequestHandler(logger, cache, config, stats);
     
-    logger->info("Proxy server initialized");
+    logger->info("Proxy server initialized with max " + std::to_string(max_connections) + " concurrent connections");
 }
 
 ProxyServer::~ProxyServer() {
     stop();
+    
+    // Close and unlink named semaphore
+    if (connection_semaphore != SEM_FAILED && connection_semaphore != nullptr) {
+        sem_close(connection_semaphore);
+        sem_unlink("/proxy_sem");
+    }
     
     delete handler;
     delete stats;
@@ -103,9 +120,18 @@ void ProxyServer::accept_connections() {
             continue;
         }
 
+        // Wait for semaphore (blocks if max connections reached)
+        if (connection_semaphore != SEM_FAILED && connection_semaphore != nullptr) {
+            sem_wait(connection_semaphore);
+        }
+
         // Launch handler in new thread
         std::thread([this, client]() {
             handler->handle_client(client);
+            // Release semaphore when connection is done
+            if (connection_semaphore != SEM_FAILED && connection_semaphore != nullptr) {
+                sem_post(connection_semaphore);
+            }
         }).detach();
     }
 }

@@ -11,6 +11,7 @@ LOG_LEVEL=INFO
 
 # Connection settings
 CONNECTION_TIMEOUT=30
+MAX_CONNECTIONS=100
 
 # Features
 ENABLE_STATS=true
