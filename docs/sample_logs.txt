@@ -1,0 +1,35 @@
+[2026-01-09 10:00:00] [INFO ] Proxy server initialized
+[2026-01-09 10:00:00] [INFO ] 🚀 Proxy server started on port 9090
+[2026-01-09 10:00:00] [INFO ] Configuration reloaded
+[2026-01-09 10:01:15] [INFO ] 127.0.0.1 -> example.com [FETCHED] (782 bytes)
+[2026-01-09 10:01:20] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:01:25] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:02:30] [INFO ] 127.0.0.1 -> example.com [HTTPS_TUNNEL]
+[2026-01-09 10:03:00] [INFO ] 127.0.0.1 -> google.com [FETCHED] (773 bytes)
+[2026-01-09 10:03:05] [INFO ] 127.0.0.1 -> google.com [CACHED] (773 bytes)
+[2026-01-09 10:03:10] [INFO ] 127.0.0.1 -> github.com [FETCHED] (103 bytes)
+[2026-01-09 10:03:15] [INFO ] 127.0.0.1 -> github.com [CACHED] (103 bytes)
+[2026-01-09 10:04:00] [INFO ] 127.0.0.1 -> instagram.com [BLOCKED_HTTP]
+[2026-01-09 10:04:05] [INFO ] 127.0.0.1 -> youtube.com [BLOCKED_HTTP]
+[2026-01-09 10:04:10] [INFO ] 127.0.0.1 -> facebook.com [BLOCKED_HTTP]
+[2026-01-09 10:05:01] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:05:01] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:05:01] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:05:01] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:05:01] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:06:00] [INFO ] Configuration reloaded
+[2026-01-09 10:06:05] [INFO ] 127.0.0.1 -> twitter.com [BLOCKED_HTTP]
+[2026-01-09 10:07:00] [ERROR] DNS lookup failed for: this-domain-does-not-exist-12345.com
+[2026-01-09 10:07:30] [INFO ] 127.0.0.1 -> httpbin.org [HTTPS_TUNNEL]
+[2026-01-09 10:08:00] [INFO ] 127.0.0.1 -> google.com [CACHED] (773 bytes)
+[2026-01-09 10:08:00] [INFO ] 127.0.0.1 -> github.com [CACHED] (103 bytes)
+[2026-01-09 10:08:00] [INFO ] 127.0.0.1 -> httpbin.org [HTTPS_TUNNEL]
+[2026-01-09 10:09:00] [INFO ] 127.0.0.1 -> stackoverflow.com [FETCHED] (1024 bytes)
+[2026-01-09 10:09:15] [INFO ] 127.0.0.1 -> stackoverflow.com [CACHED] (1024 bytes)
+[2026-01-09 10:10:00] [INFO ] 127.0.0.1 -> reddit.com [HTTPS_TUNNEL]
+[2026-01-09 10:10:30] [INFO ] 127.0.0.1 -> wikipedia.org [FETCHED] (2048 bytes)
+[2026-01-09 10:11:00] [DEBUG] Cache cleanup completed
+[2026-01-09 10:12:00] [INFO ] 127.0.0.1 -> example.com [CACHED] (782 bytes)
+[2026-01-09 10:13:00] [INFO ] 127.0.0.1 -> google.com [CACHED] (773 bytes)
+[2026-01-09 10:14:00] [INFO ] 127.0.0.1 -> github.com [CACHED] (103 bytes)
+[2026-01-09 10:15:00] [INFO ] Proxy server stopped
