@@ -277,8 +277,22 @@ void RequestHandler::handle_client(int client) {
 
     std::string request(buffer, bytes);
 
+    // Check for /stats endpoint (direct access without proxy)
+    if (request.find("GET /stats") == 0 || request.find("GET /stats ") != std::string::npos) {
+        if (!stats) {
+            std::string response = "HTTP/1.1 404 Not Found\r\n\r\nStats not enabled";
+            send(client, response.c_str(), response.size(), 0);
+        } else {
+            std::string stats_json = stats->get_json_stats();
+            std::string response = "HTTP/1.1 200 OK\r\n"
+                                  "Content-Type: application/json\r\n"
+                                  "Content-Length: " + std::to_string(stats_json.size()) + "\r\n"
+                                  "\r\n" + stats_json;
+            send(client, response.c_str(), response.size(), 0);
+        }
+    }
     // Handle HTTPS CONNECT
-    if (request.find("CONNECT") == 0) {
+    else if (request.find("CONNECT") == 0) {
         handle_https_connect(client, request, client_ip);
     }
     // Handle HTTP
