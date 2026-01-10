@@ -1,17 +1,23 @@
-# 🚀 Advanced Proxy Server
+# Advanced Proxy Server
 
 A high-performance, multi-threaded HTTP/HTTPS proxy server with intelligent caching, request filtering, and real-time statistics.
 
-## ✨ Features
+## Demo Video
+
+[![Proxy Server Demo](https://img.youtube.com/vi/mEdxokwJN7I/maxresdefault.jpg)](https://youtube.com/shorts/mEdxokwJN7I?feature=share)
+
+**Click to watch the demonstration video**
+
+## Features
 
 ### Core Functionality
-- ✅ **HTTP & HTTPS Support** - Full proxy for both protocols with CONNECT tunneling
-- ✅ **Multi-threaded** - Handles multiple concurrent connections efficiently
-- ✅ **Intelligent Caching** - LRU cache with TTL (Time-To-Live) expiration
-- ✅ **Domain Blocking** - Block/whitelist specific domains
-- ✅ **Hot Reload Config** - Configuration changes apply without restart
-- ✅ **Advanced Logging** - Multiple log levels (DEBUG, INFO, WARN, ERROR)
-- ✅ **Statistics Tracking** - Real-time performance and usage metrics
+- **HTTP & HTTPS Support** - Full proxy for both protocols with CONNECT tunneling
+- **Multi-threaded** - Handles multiple concurrent connections efficiently
+- **Intelligent Caching** - LRU cache with TTL (Time-To-Live) expiration
+- **Domain Blocking** - Block/whitelist specific domains
+- **Hot Reload Config** - Configuration changes apply without restart
+- **Advanced Logging** - Multiple log levels (DEBUG, INFO, WARN, ERROR)
+- **Statistics Tracking** - Real-time performance and usage metrics
 
 ### Cache Features
 - LRU (Least Recently Used) eviction policy
@@ -33,7 +39,7 @@ A high-performance, multi-threaded HTTP/HTTPS proxy server with intelligent cach
 - Response time measurements
 - Cache hit rate
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 proxy-server/
@@ -59,7 +65,7 @@ proxy-server/
 └── README.md                 # This file
 ```
 
-## 🛠️ Building
+## Building
 
 ### Requirements
 - C++17 compatible compiler (g++, clang++)
@@ -82,7 +88,7 @@ make release
 make clean
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Starting the Server
 
@@ -151,12 +157,12 @@ export https_proxy=http://localhost:9090
 1. Preferences → Network Settings
 2. Manual proxy configuration
 3. HTTP Proxy: `localhost`, Port: `9090`
-4. ✓ Also use this proxy for HTTPS
+4. Also use this proxy for HTTPS
 
 **Chrome/Safari:**
 - Use system proxy settings or extensions
 
-## 📊 Monitoring
+## Monitoring
 
 The server logs all activity to `logs/proxy.log` with timestamps and status codes.
 
@@ -184,7 +190,7 @@ Cache Hit Rate: 45.00%
 ============================================
 ```
 
-## 🧪 Testing
+## Testing
 
 Test the proxy functionality:
 
@@ -204,7 +210,7 @@ time curl -x http://localhost:9090 http://example.com
 time curl -x http://localhost:9090 http://example.com
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Modular Design
 
@@ -234,9 +240,9 @@ The project follows a clean, modular architecture:
 - **Size-based** limits (entries + bytes)
 - **Automatic cleanup** every 5 minutes
 
-## 🔒 Security Considerations
+## Security Considerations
 
-⚠️ **Important:** This is an educational proxy server. For production use:
+**Important:** This is an educational proxy server. For production use:
 
 - Add authentication (Basic Auth, Token-based)
 - Implement SSL/TLS for proxy connection
@@ -267,7 +273,7 @@ sudo ./proxy_server
 - Check firewall settings
 - Verify DNS resolution
 
-## 📚 Advanced Features
+## Advanced Features
 
 ### Custom Cache TTL per Domain
 Modify `cache_manager.cpp` to set different TTLs based on hostname.
@@ -281,7 +287,7 @@ Modify connection logic to route through another proxy.
 ### Statistics API
 Add an HTTP endpoint in `proxy_server.cpp` to serve JSON statistics.
 
-## 🤝 Contributing
+## Contributing
 
 This is an educational project. Feel free to:
 - Report bugs
@@ -289,15 +295,15 @@ This is an educational project. Feel free to:
 - Submit improvements
 - Fork and modify
 
-## 📄 License
+## License
 
 This project is open-source and available for educational purposes.
 
-## 👥 Authors
+## Authors
 
 Created as a learning project for understanding network programming, proxy servers, and modern C++ development.
 
-## 🎓 Learning Resources
+## Learning Resources
 
 - [HTTP/1.1 Specification](https://tools.ietf.org/html/rfc7230)
 - [CONNECT Method](https://tools.ietf.org/html/rfc7231#section-4.3.6)
