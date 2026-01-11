@@ -2,11 +2,9 @@
 
 A high-performance, multi-threaded HTTP/HTTPS proxy server with intelligent caching, request filtering, and real-time statistics.
 
-## Demo Video
+## 📹 Project Demonstration
 
-[![Proxy Server Demo](https://img.youtube.com/vi/mEdxokwJN7I/maxresdefault.jpg)](https://youtube.com/shorts/mEdxokwJN7I?feature=share)
-
-**Click to watch the demonstration video**
+**[View Complete Project Documentation & Demo →](https://drive.google.com/file/d/1Ly3tRHwksWmYyY6mw15OEjfZfoMzHyQq/view?usp=share_link)**
 
 ## Features
 
